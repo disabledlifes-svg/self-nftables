@@ -1,5 +1,7 @@
 chatgpt plus搓的
 
+改变端口增删和转发增删 记得选项3应用一遍
+
 sudo wget -O nft-manager.sh \
 https://raw.githubusercontent.com/disabledlifes-svg/self-nftables/refs/heads/main/nft-manager.sh && chmod +x /root/nft-manager.sh
 
