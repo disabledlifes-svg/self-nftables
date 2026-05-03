@@ -1,13 +1,3 @@
-chatgpt搓的
-任何改动记得先选项2预览一遍没问题再选项3应用一遍
-
-
-sudo wget -O nft-manager.sh \
-https://raw.githubusercontent.com/disabledlifes-svg/self-nftables/refs/heads/main/nft-manager.sh && chmod +x /root/nft-manager.sh && ./nft-manager.sh
-
-进入脚本后先操作选项1,2,3
-
-
 # nft-manager
 
 > 一个面向远程 Linux 服务器的 **Bash + nftables 防火墙与端口转发管理脚本**。  
