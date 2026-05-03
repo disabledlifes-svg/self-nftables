@@ -10,7 +10,6 @@ https://raw.githubusercontent.com/disabledlifes-svg/self-nftables/refs/heads/mai
 
 
 开启端口转发功能前提
-
 WAN_IFACE="$(ip route show default 0.0.0.0/0 | awk '{for (i=1;i<=NF;i++) if ($i=="dev") {print $(i+1); exit}}')"
 
 [ -n "$WAN_IFACE" ] || { echo "未找到默认出口网卡"; exit 1; }
