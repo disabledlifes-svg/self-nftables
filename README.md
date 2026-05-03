@@ -6,20 +6,18 @@ chatgpt plus搓的
 sudo wget -O nft-manager.sh \
 https://raw.githubusercontent.com/disabledlifes-svg/self-nftables/refs/heads/main/nft-manager.sh && chmod +x /root/nft-manager.sh && ./nft-manager.sh
 
-进入脚本后先操作选项1和2
+进入脚本后先操作选项1,2,3
 
 
 开启端口转发功能前提
 
-mkdir -p /etc/nft_manager
-cat >/etc/nft_manager/settings.conf <<'EOF'
-WAN_IFACE=eth0
-ENABLE_FORWARD_SNAT=yes
-EOF
+WAN_IFACE="$(ip route show default 0.0.0.0/0 | awk '{for (i=1;i<=NF;i++) if ($i=="dev") {print $(i+1); exit}}')"
 
-sudo /root/nft-manager.sh preview
-sudo nft -c -f /etc/nft_manager/rules.preview.nft
-sudo /root/nft-manager.sh apply
+[ -n "$WAN_IFACE" ] || { echo "未找到默认出口网卡"; exit 1; }
+
+sed -i "s/^WAN_IFACE=.*/WAN_IFACE=$WAN_IFACE/" /etc/nft_manager/settings.conf
+
+grep '^WAN_IFACE=' /etc/nft_manager/settings.conf
 
 
 nft-manager.service管理
